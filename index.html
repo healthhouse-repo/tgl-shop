@@ -624,6 +624,24 @@
 
   .ask-price{font-size:13px;color:#8A8A8A;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:22px;}
   .quote-note{font-size:12px;color:#8A8A8A;margin-top:10px;}
+
+  /* ---------- COOKIE BAR ---------- */
+  .cookie-bar{position:fixed;left:0;right:0;bottom:0;z-index:9000;background:#15191D;color:#fff;
+    border-top:3px solid #D3003C;padding:20px 0;transform:translateY(110%);transition:transform .35s ease;
+    box-shadow:0 -8px 30px rgba(0,0,0,.35)}
+  .cookie-bar.show{transform:translateY(0)}
+  .cookie-inner{display:flex;align-items:center;gap:28px;flex-wrap:wrap}
+  .cookie-copy{flex:1;min-width:260px}
+  .cookie-copy strong{display:block;font-size:15px;letter-spacing:.04em;text-transform:uppercase;margin-bottom:6px}
+  .cookie-copy p{margin:0;font-size:13px;line-height:1.6;color:rgba(255,255,255,.72)}
+  .cookie-actions{display:flex;gap:12px;flex-wrap:wrap}
+  .cookie-btn{cursor:pointer;border:none;padding:13px 26px;font-size:12px;font-weight:700;letter-spacing:.09em;
+    text-transform:uppercase;transition:opacity .2s,background .2s,color .2s;font-family:inherit}
+  .cookie-btn.primary{background:#D3003C;color:#fff}
+  .cookie-btn.primary:hover{opacity:.85}
+  .cookie-btn.ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4)}
+  .cookie-btn.ghost:hover{background:rgba(255,255,255,.12)}
+  @media(max-width:720px){.cookie-inner{gap:16px}.cookie-actions{width:100%}.cookie-btn{flex:1;text-align:center}}
 </style>
 </head>
 <body>
@@ -664,6 +682,15 @@
 </main>
 <footer><div class="container"><div class="footer-logo"><span class="tgl-logo lg muted"><span class="tgl-badge">TGL</span><span class="tgl-word"><span class="tgl-main">GOOD <span class="tgl-accent">LIFE</span></span><span class="tgl-sub">Wholesale Supplements</span></span></span></div><div class="footer-grid"><div><h5>Merken</h5><ul><li><a href="#catalogus?merk=Cellucor%20C4">Cellucor C4</a></li><li><a href="#catalogus?merk=Gaspari%20Nutrition">Gaspari Nutrition</a></li><li><a href="#catalogus?merk=5%25%20Nutrition">5% Nutrition</a></li><li><a href="#catalogus?merk=DOPE%21">DOPE!</a></li></ul></div><div><h5>Assortiment</h5><ul><li><a href="#catalogus?cat=Pre-Workout">Pre-Workout</a></li><li><a href="#catalogus?cat=Eiwitten">Eiwitten</a></li><li><a href="#catalogus?cat=Amino%27s">Amino's</a></li><li><a href="#catalogus?cat=Creatine">Creatine</a></li><li><a href="#catalogus?cat=Vitamines">Vitamines</a></li><li><a href="#catalogus?cat=Accessoires">Accessoires</a></li></ul></div><div><h5>Zakendoen</h5><ul><li><a href="#word-klant">Word klant</a></li><li><a href="#catalogus">Catalogus</a></li><li><a href="#merken">Merken</a></li><li><a href="#over-ons">Over ons</a></li></ul></div><div><h5>Service</h5><ul><li><a href="#contact">Contact</a></li><li><a href="#verzending">Verzending</a></li><li><a href="#retour">Retourneren</a></li><li><a href="#faq">Veelgestelde vragen</a></li><li><a href="#voorwaarden">Algemene voorwaarden</a></li></ul></div><div><h5>Contact</h5><ul><li>Meer en Vaart 18 A</li><li>1068 ZZ Amsterdam</li><li><a href="mailto:info@thegoodlifedistribution.nl">info@thegoodlifedistribution.nl</a></li><li>KVK 90197011</li></ul></div></div><div class="footer-bottom"><div>&copy; 2026 The Good Life Distribution B.V. &middot; Wholesale Supplements</div><div>Alle genoemde merken zijn eigendom van hun respectievelijke eigenaren.</div></div></div></footer>
 <div class="search-overlay" id="searchOverlay"></div><div class="search-panel" id="searchPanel"><div class="search-inner"><div class="search-field"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input name="Zoekopdracht" type="text" id="searchInput" placeholder="Zoek op merk, product of categorie..." autocomplete="off"><button class="search-close" id="searchClose">Sluiten</button></div><div class="search-results" id="searchResults"></div></div></div><div class="cart-overlay" id="cartOverlay"></div><div class="cart-panel" id="cartPanel"><div class="cart-header"><h3>Offertelijst (<span id="cartCount">0</span>)</h3><button class="cart-close" id="cartClose">&times;</button></div><div class="cart-shipping">GRATIS LEVERING VANAF &euro; 500,- &middot; VANAF 6 STUKS PER ARTIKEL</div><div class="cart-items" id="cartItems"></div><div class="cart-footer"><div class="cart-subtotal"><span>Totaal</span><span id="cartSubtotal">Op aanvraag</span></div><button class="btn btn-dark" id="checkoutBtn">Offerte aanvragen</button><div class="quote-note">Groothandelsprijzen ontvangt u in uw persoonlijke offerte.</div></div></div><div class="toast" id="toast"></div>
+<div class="cookie-bar" id="cookieBar" role="dialog" aria-live="polite" aria-label="Wij gebruiken cookies">
+  <div class="container cookie-inner">
+    <div class="cookie-copy"><strong>Wij gebruiken cookies</strong><p>Deze site gebruikt functionele cookies om de winkelwagen te laten werken, en analytische cookies om de site te verbeteren. Je kiest zelf wat je toestaat.</p></div>
+    <div class="cookie-actions">
+      <button class="cookie-btn ghost" id="cookieDeny">Alleen noodzakelijk</button>
+      <button class="cookie-btn primary" id="cookieAccept">Alles accepteren</button>
+    </div>
+  </div>
+
 <script>
 (function(){
   "use strict";
@@ -1573,8 +1600,27 @@
   renderCatalog();
   renderCart();
   router();
+
+  /* ---------- COOKIE BAR ---------- */
+  (function(){
+    var bar=document.getElementById("cookieBar");
+    if(!bar) return;
+    var KEY="cookieConsent";
+    function close(v){
+      try{localStorage.setItem(KEY,v);}catch(e){}
+      bar.classList.remove("show");
+      if(typeof showToast==="function") showToast("Cookievoorkeur opgeslagen");
+    }
+    var saved=null; try{saved=localStorage.getItem(KEY);}catch(e){}
+    if(!saved){ setTimeout(function(){bar.classList.add("show");},900); }
+    document.getElementById("cookieAccept").addEventListener("click",function(){close("all");});
+    document.getElementById("cookieDeny").addEventListener("click",function(){close("essential");});
+  })();
 })();
 
 </script>
+
+</div>
+
 </body>
 </html>
