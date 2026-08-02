@@ -642,6 +642,42 @@
   .cookie-btn.ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4)}
   .cookie-btn.ghost:hover{background:rgba(255,255,255,.12)}
   @media(max-width:720px){.cookie-inner{gap:16px}.cookie-actions{width:100%}.cookie-btn{flex:1;text-align:center}}
+
+  /* ---------- LOGIN / ACCOUNT PORTAL ---------- */
+  .account-link{color:#fff;font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:0.05em;white-space:nowrap;transition:color .15s ease;}
+  .account-link:hover{color:var(--cellucor-red);}
+  .login-layout{display:flex;gap:48px;flex-wrap:wrap;}
+  .login-layout > div{flex:1;min-width:300px;}
+  .login-error{display:none;background:rgba(211,0,60,0.08);border:1px solid var(--cellucor-red);color:var(--cellucor-red);
+    font-size:13px;font-weight:700;padding:12px 14px;border-radius:4px;margin-bottom:18px;}
+  .login-error.show{display:block;}
+  .form-checkbox{display:flex;align-items:center;gap:8px;margin-bottom:20px;font-size:14px;}
+  .form-checkbox input{width:16px;height:16px;margin:0;}
+  .login-links{margin-top:18px;display:flex;flex-direction:column;gap:8px;font-size:13px;}
+  .login-links a{color:var(--cellucor-red);font-weight:700;}
+  .login-links a:hover{text-decoration:underline;}
+  .link-btn{background:none;border:0;padding:0;color:var(--cellucor-red);font-weight:700;font-size:13px;
+    text-align:left;cursor:pointer;font-family:inherit;}
+  .link-btn:hover{text-decoration:underline;}
+  .login-benefits{background:#F7F7F7;border-radius:8px;padding:28px;}
+  .login-benefits ul{margin:0;}
+
+  .account-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-bottom:44px;}
+  @media(max-width:860px){.account-stats{grid-template-columns:repeat(2,1fr);}}
+  .stat-tile{background:#F7F7F7;border-radius:8px;padding:22px;text-align:center;}
+  .stat-tile .stat-label{font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:#8A8A8A;font-weight:700;margin-bottom:10px;}
+  .stat-tile .stat-value{font-family:'Pilat Extended',Arial,sans-serif;font-weight:900;font-size:20px;color:var(--heading-color);word-break:break-word;}
+  .status-pill{display:inline-block;padding:4px 10px;border-radius:3px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;white-space:nowrap;}
+  .status-geleverd{background:rgba(6,92,150,0.1);color:var(--cellucor-blue);}
+  .status-onderweg{background:rgba(213,164,0,0.15);color:#8A6D00;}
+  .status-behandeling{background:rgba(211,0,60,0.08);color:var(--cellucor-red);}
+  .downloads-list li a{color:var(--cellucor-red);font-weight:700;cursor:pointer;}
+  .downloads-list li a:hover{text-decoration:underline;}
+  .account-actions{margin-top:8px;}
+  @media(max-width:600px){
+    .account-stats{grid-template-columns:1fr 1fr;}
+    .info-table{display:block;overflow-x:auto;white-space:nowrap;}
+  }
 </style>
 </head>
 <body>
@@ -657,7 +693,7 @@
   </defs>
 </svg>
 <div class="brand-bar"><div class="container"><span>&#128230; Groothandelprijzen vanaf 6 stuks</span><span class="sep">&middot;</span><span>&#128666; Gratis levering vanaf &euro; 500,-</span><span class="sep">&middot;</span><span>&#10003; Offici&euml;el distributeur</span></div></div>
-<nav class="navbar" id="navbar"><div class="container nav-inner"><div class="nav-left"><a href="#home" class="logo-link" aria-label="The Good Life Distribution home"><span class="tgl-logo"><span class="tgl-badge">TGL</span><span class="tgl-word"><span class="tgl-main">GOOD <span class="tgl-accent">LIFE</span></span><span class="tgl-sub">Wholesale Supplements</span></span></span></a><ul class="nav-links"><li class="nav-item"><a href="#merken" class="top-link">Merken</a><div class="dropdown"><a href="#catalogus?merk=Cellucor%20C4">Cellucor C4</a><a href="#catalogus?merk=Gaspari%20Nutrition">Gaspari Nutrition</a><a href="#catalogus?merk=5%25%20Nutrition">5% Nutrition</a><a href="#catalogus?merk=DOPE%21">DOPE!</a></div></li><li class="nav-item"><a href="#catalogus" class="top-link">Catalogus</a></li><li class="nav-item"><a href="#word-klant" class="top-link">Word Klant</a></li><li class="nav-item"><a href="#over-ons" class="top-link">Over Ons</a></li><li class="nav-item"><a href="#contact" class="top-link">Contact</a></li></ul></div><div class="nav-right"><button class="icon-btn" id="searchToggle" aria-label="zoeken"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button><button class="icon-btn" id="cartToggle" aria-label="offertelijst"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293A1 1 0 0 0 5.414 17H17M9 21a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm8 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"/></svg><span class="cart-badge" id="cartBadge" style="display:none;">0</span></button><button class="hamburger" id="hamburgerBtn" aria-label="menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button></div></div><div class="mobile-menu" id="mobileMenu"><a href="#merken">Merken</a><a href="#catalogus">Catalogus</a><a href="#word-klant">Word Klant</a><a href="#over-ons">Over Ons</a><a href="#contact">Contact</a><a href="#faq">Veelgestelde vragen</a></div></nav>
+<nav class="navbar" id="navbar"><div class="container nav-inner"><div class="nav-left"><a href="#home" class="logo-link" aria-label="The Good Life Distribution home"><span class="tgl-logo"><span class="tgl-badge">TGL</span><span class="tgl-word"><span class="tgl-main">GOOD <span class="tgl-accent">LIFE</span></span><span class="tgl-sub">Wholesale Supplements</span></span></span></a><ul class="nav-links"><li class="nav-item"><a href="#merken" class="top-link">Merken</a><div class="dropdown"><a href="#catalogus?merk=Cellucor%20C4">Cellucor C4</a><a href="#catalogus?merk=Gaspari%20Nutrition">Gaspari Nutrition</a><a href="#catalogus?merk=5%25%20Nutrition">5% Nutrition</a><a href="#catalogus?merk=DOPE%21">DOPE!</a></div></li><li class="nav-item"><a href="#catalogus" class="top-link">Catalogus</a></li><li class="nav-item"><a href="#word-klant" class="top-link">Word Klant</a></li><li class="nav-item"><a href="#over-ons" class="top-link">Over Ons</a></li><li class="nav-item"><a href="#contact" class="top-link">Contact</a></li></ul></div><div class="nav-right"><a href="#inloggen" class="account-link" id="accountLink">Inloggen</a><button class="icon-btn" id="searchToggle" aria-label="zoeken"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button><button class="icon-btn" id="cartToggle" aria-label="offertelijst"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293A1 1 0 0 0 5.414 17H17M9 21a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm8 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"/></svg><span class="cart-badge" id="cartBadge" style="display:none;">0</span></button><button class="hamburger" id="hamburgerBtn" aria-label="menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button></div></div><div class="mobile-menu" id="mobileMenu"><a href="#merken">Merken</a><a href="#catalogus">Catalogus</a><a href="#word-klant">Word Klant</a><a href="#over-ons">Over Ons</a><a href="#contact">Contact</a><a href="#faq">Veelgestelde vragen</a><a href="#inloggen" id="mobileLoginLink">Inloggen</a><a href="#account" id="mobileAccountLink" style="display:none;">Mijn account</a></div></nav>
 <main>
 <section class="page active" id="page-home">
 <section class="hero"><div class="hero-glow"></div><div class="container"><div class="hero-text"><div class="hero-eyebrow">B2B Groothandel Sportvoeding</div><h1>Wholesale<br/><span class="accent-text">Supplements</span></h1><p>The Good Life Distribution B.V. levert de sterkste sportvoedingsmerken aan webshops, sportscholen, retail en horeca in de Benelux. Uit eigen voorraad, met scherpe staffelprijzen en een vaste accountmanager.</p><div class="hero-cta"><a href="#catalogus" class="btn btn-dark" style="background:var(--cellucor-red);border-color:var(--cellucor-red);">Bekijk catalogus</a><a href="#word-klant" class="btn btn-outline-white">Word klant</a></div></div><div class="hero-image-wrap"><img src="./assets/img/dope_lifestyle-deadlift.jpg" alt="Sporter in de gym" style="border-radius:10px;max-height:520px;" /></div></div></section>
@@ -679,8 +715,10 @@
 <section class="page" id="page-retour"><div class="page-header"><div class="container"><h1>Retourneren</h1><p>Zakelijke retourvoorwaarden van The Good Life Distribution B.V.</p></div></div><div class="content-section"><div class="container"><p>Omdat wij uitsluitend zakelijk leveren, geldt het wettelijke herroepingsrecht voor consumenten niet. Wij hanteren de volgende retourregeling:</p><ul class="plain-list"><li>Meld transportschade of een onjuiste levering binnen 5 werkdagen na ontvangst.</li><li>Retourzendingen zijn uitsluitend mogelijk na schriftelijke goedkeuring en met RMA-nummer.</li><li>Producten moeten ongeopend, onbeschadigd en in de originele verpakking retour.</li><li>Bij retour zonder gebrek kan 15% behandelkosten in rekening worden gebracht.</li><li>Producten met een resterende houdbaarheid van minder dan 6 maanden worden niet teruggenomen.</li></ul><p>Retouraanvragen kunt u mailen naar info@thegoodlifedistribution.nl onder vermelding van uw factuurnummer.</p></div></div></section>
 <section class="page" id="page-voorwaarden"><div class="page-header"><div class="container"><h1>Algemene voorwaarden</h1><p>Samenvatting van de leveringsvoorwaarden voor zakelijke afnemers.</p></div></div><div class="content-section"><div class="container"><h2 class="block-title">1. Toepasselijkheid</h2><p>Deze voorwaarden gelden voor alle aanbiedingen, offertes en leveringen van The Good Life Distribution B.V., KVK 90197011, gevestigd te Meer en Vaart 18 A, 1068 ZZ Amsterdam.</p><h2 class="block-title">2. Zakelijke levering</h2><p>Wij leveren uitsluitend aan ondernemingen met een geldig KVK-nummer of buitenlands equivalent. Minimale afname bedraagt 6 stuks per artikel.</p><h2 class="block-title">3. Prijzen en offertes</h2><p>Getoonde adviesverkoopprijzen zijn indicatief en inclusief btw. Groothandelsprijzen worden per offerte verstrekt, zijn exclusief btw en 14 dagen geldig.</p><h2 class="block-title">4. Betaling</h2><p>Eerste bestellingen worden vooruit betaald. Daarna is betaling binnen 14 dagen na factuurdatum mogelijk na goedkeuring van een kredietlimiet.</p><h2 class="block-title">5. Eigendomsvoorbehoud</h2><p>Geleverde goederen blijven eigendom van The Good Life Distribution B.V. tot volledige betaling is ontvangen.</p><h2 class="block-title">6. Aansprakelijkheid</h2><p>Onze aansprakelijkheid is beperkt tot het factuurbedrag van de betreffende levering. Op alle overeenkomsten is Nederlands recht van toepassing.</p></div></div></section>
 <section class="page" id="page-faq"><div class="page-header"><div class="container"><h1>Veelgestelde vragen</h1><p>Antwoorden op de vragen die wij het vaakst krijgen van nieuwe afnemers.</p></div></div><div class="accordions" id="faqAccordions"><div class="accordion-item"><div class="accordion-head"><h3>Leveren jullie ook aan particulieren?</h3><span class="plus">+</span></div><div class="accordion-body"><div class="accordion-body-inner">Nee. The Good Life Distribution levert uitsluitend zakelijk aan ondernemingen met een geldig KVK-nummer.</div></div></div><div class="accordion-item"><div class="accordion-head"><h3>Wat is de minimale afname?</h3><span class="plus">+</span></div><div class="accordion-body"><div class="accordion-body-inner">Groothandelprijzen gelden vanaf 6 stuks per artikel. Er geldt geen minimum ordertotaal, maar vanaf &euro; 500,- leveren wij gratis.</div></div></div><div class="accordion-item"><div class="accordion-head"><h3>Hoe ontvang ik de groothandelsprijzen?</h3><span class="plus">+</span></div><div class="accordion-body"><div class="accordion-body-inner">Stel uw offertelijst samen of vul het formulier op de pagina Word Klant in. U ontvangt binnen &eacute;&eacute;n werkdag onze prijslijst.</div></div></div><div class="accordion-item"><div class="accordion-head"><h3>Krijg ik exclusiviteit in mijn regio?</h3><span class="plus">+</span></div><div class="accordion-body"><div class="accordion-body-inner">Voor bepaalde merken en gebieden zijn afspraken mogelijk bij een vast afnamevolume. Neem hiervoor contact met ons op.</div></div></div><div class="accordion-item"><div class="accordion-head"><h3>Beschikken jullie over productcontent?</h3><span class="plus">+</span></div><div class="accordion-body"><div class="accordion-body-inner">Ja. Klanten ontvangen kosteloos productfoto&#39;s, teksten, voedingswaarden en logo&#39;s voor gebruik in hun webshop.</div></div></div><div class="accordion-item"><div class="accordion-head"><h3>Wat is de houdbaarheid van de producten?</h3><span class="plus">+</span></div><div class="accordion-body"><div class="accordion-body-inner">Wij leveren standaard producten met een resterende houdbaarheid van minimaal 12 maanden.</div></div></div></div></section>
+<section class="page" id="page-inloggen"><div class="page-header"><div class="container"><h1>Inloggen</h1><p>Dit klantportaal is uitsluitend bedoeld voor bestaande wholesale-klanten van The Good Life Distribution.</p></div></div><div class="content-section"><div class="container"><div class="login-layout"><div><form class="site-form" id="loginForm"><div class="login-error" id="loginError">Onbekend e-mailadres of wachtwoord.</div><div class="form-group"><label for="lfEmail">E-mailadres</label><input id="lfEmail" name="E-mailadres" type="email" required /></div><div class="form-group"><label for="lfPass">Wachtwoord</label><input id="lfPass" name="Wachtwoord" type="password" required /></div><div class="form-checkbox"><label><input id="lfRemember" name="Ingelogd blijven" type="checkbox" /> Ingelogd blijven</label></div><button type="submit" class="btn btn-dark">Inloggen</button><div class="login-links"><a href="#word-klant">Nog geen account? Word klant</a><button type="button" class="link-btn" id="forgotPassBtn">Wachtwoord vergeten?</button></div></form></div><div class="login-benefits"><h2 class="block-title">Voordelen van je TGL-account</h2><ul class="plain-list"><li>Actuele groothandelsprijzen inzien</li><li>Snel herbestellen van eerdere orders</li><li>Orderhistorie en facturen inzien</li><li>Persoonlijke accountmanager</li></ul></div></div></div></div></section>
+<section class="page" id="page-account"><div class="page-header"><div class="container"><h1 id="acctWelcome">Mijn account</h1><p>Overzicht van uw wholesale-account bij The Good Life Distribution.</p></div></div><div class="content-section"><div class="container"><div class="account-stats" id="acctStats"></div><h2 class="block-title">Recente orders</h2><table class="info-table"><thead><tr><th>Ordernummer</th><th>Datum</th><th>Aantal artikelen</th><th>Bedrag</th><th>Status</th></tr></thead><tbody id="acctOrdersBody"></tbody></table><h2 class="block-title">Downloads</h2><ul class="plain-list downloads-list" id="acctDownloads"><li><a href="#" data-download="Prijslijst">Prijslijst (PDF)</a></li><li><a href="#" data-download="Productcatalogus">Productcatalogus</a></li><li><a href="#" data-download="Algemene voorwaarden">Algemene voorwaarden</a></li></ul><h2 class="block-title">Jouw accountmanager</h2><div class="contact-info-block" id="acctManager"></div><div class="account-actions"><button class="btn btn-outline" id="logoutBtn">Uitloggen</button></div></div></div></section>
 </main>
-<footer><div class="container"><div class="footer-logo"><span class="tgl-logo lg muted"><span class="tgl-badge">TGL</span><span class="tgl-word"><span class="tgl-main">GOOD <span class="tgl-accent">LIFE</span></span><span class="tgl-sub">Wholesale Supplements</span></span></span></div><div class="footer-grid"><div><h5>Merken</h5><ul><li><a href="#catalogus?merk=Cellucor%20C4">Cellucor C4</a></li><li><a href="#catalogus?merk=Gaspari%20Nutrition">Gaspari Nutrition</a></li><li><a href="#catalogus?merk=5%25%20Nutrition">5% Nutrition</a></li><li><a href="#catalogus?merk=DOPE%21">DOPE!</a></li></ul></div><div><h5>Assortiment</h5><ul><li><a href="#catalogus?cat=Pre-Workout">Pre-Workout</a></li><li><a href="#catalogus?cat=Eiwitten">Eiwitten</a></li><li><a href="#catalogus?cat=Amino%27s">Amino's</a></li><li><a href="#catalogus?cat=Creatine">Creatine</a></li><li><a href="#catalogus?cat=Vitamines">Vitamines</a></li><li><a href="#catalogus?cat=Accessoires">Accessoires</a></li></ul></div><div><h5>Zakendoen</h5><ul><li><a href="#word-klant">Word klant</a></li><li><a href="#catalogus">Catalogus</a></li><li><a href="#merken">Merken</a></li><li><a href="#over-ons">Over ons</a></li></ul></div><div><h5>Service</h5><ul><li><a href="#contact">Contact</a></li><li><a href="#verzending">Verzending</a></li><li><a href="#retour">Retourneren</a></li><li><a href="#faq">Veelgestelde vragen</a></li><li><a href="#voorwaarden">Algemene voorwaarden</a></li></ul></div><div><h5>Contact</h5><ul><li>Meer en Vaart 18 A</li><li>1068 ZZ Amsterdam</li><li><a href="mailto:info@thegoodlifedistribution.nl">info@thegoodlifedistribution.nl</a></li><li>KVK 90197011</li></ul></div></div><div class="footer-bottom"><div>&copy; 2026 The Good Life Distribution B.V. &middot; Wholesale Supplements</div><div>Alle genoemde merken zijn eigendom van hun respectievelijke eigenaren.</div></div></div></footer>
+<footer><div class="container"><div class="footer-logo"><span class="tgl-logo lg muted"><span class="tgl-badge">TGL</span><span class="tgl-word"><span class="tgl-main">GOOD <span class="tgl-accent">LIFE</span></span><span class="tgl-sub">Wholesale Supplements</span></span></span></div><div class="footer-grid"><div><h5>Merken</h5><ul><li><a href="#catalogus?merk=Cellucor%20C4">Cellucor C4</a></li><li><a href="#catalogus?merk=Gaspari%20Nutrition">Gaspari Nutrition</a></li><li><a href="#catalogus?merk=5%25%20Nutrition">5% Nutrition</a></li><li><a href="#catalogus?merk=DOPE%21">DOPE!</a></li></ul></div><div><h5>Assortiment</h5><ul><li><a href="#catalogus?cat=Pre-Workout">Pre-Workout</a></li><li><a href="#catalogus?cat=Eiwitten">Eiwitten</a></li><li><a href="#catalogus?cat=Amino%27s">Amino's</a></li><li><a href="#catalogus?cat=Creatine">Creatine</a></li><li><a href="#catalogus?cat=Vitamines">Vitamines</a></li><li><a href="#catalogus?cat=Accessoires">Accessoires</a></li></ul></div><div><h5>Zakendoen</h5><ul><li><a href="#word-klant">Word klant</a></li><li><a href="#inloggen">Inloggen</a></li><li><a href="#catalogus">Catalogus</a></li><li><a href="#merken">Merken</a></li><li><a href="#over-ons">Over ons</a></li></ul></div><div><h5>Service</h5><ul><li><a href="#contact">Contact</a></li><li><a href="#verzending">Verzending</a></li><li><a href="#retour">Retourneren</a></li><li><a href="#faq">Veelgestelde vragen</a></li><li><a href="#voorwaarden">Algemene voorwaarden</a></li></ul></div><div><h5>Contact</h5><ul><li>Meer en Vaart 18 A</li><li>1068 ZZ Amsterdam</li><li><a href="mailto:info@thegoodlifedistribution.nl">info@thegoodlifedistribution.nl</a></li><li>KVK 90197011</li></ul></div></div><div class="footer-bottom"><div>&copy; 2026 The Good Life Distribution B.V. &middot; Wholesale Supplements</div><div>Alle genoemde merken zijn eigendom van hun respectievelijke eigenaren.</div></div></div></footer>
 <div class="search-overlay" id="searchOverlay"></div><div class="search-panel" id="searchPanel"><div class="search-inner"><div class="search-field"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input name="Zoekopdracht" type="text" id="searchInput" placeholder="Zoek op merk, product of categorie..." autocomplete="off"><button class="search-close" id="searchClose">Sluiten</button></div><div class="search-results" id="searchResults"></div></div></div><div class="cart-overlay" id="cartOverlay"></div><div class="cart-panel" id="cartPanel"><div class="cart-header"><h3>Offertelijst (<span id="cartCount">0</span>)</h3><button class="cart-close" id="cartClose">&times;</button></div><div class="cart-shipping">GRATIS LEVERING VANAF &euro; 500,- &middot; VANAF 6 STUKS PER ARTIKEL</div><div class="cart-items" id="cartItems"></div><div class="cart-footer"><div class="cart-subtotal"><span>Totaal</span><span id="cartSubtotal">Op aanvraag</span></div><button class="btn btn-dark" id="checkoutBtn">Offerte aanvragen</button><div class="quote-note">Groothandelsprijzen ontvangt u in uw persoonlijke offerte.</div></div></div><div class="toast" id="toast"></div>
 <div class="cookie-bar" id="cookieBar" role="dialog" aria-live="polite" aria-label="Wij gebruiken cookies">
   <div class="container cookie-inner">
@@ -1178,6 +1216,74 @@
     }catch(err){}
   }
 
+  /* ---------- DEMO ACCOUNTS (KLANTPORTAAL LOGIN) ---------- */
+  // Dit zijn demo-testaccounts voor het klantportaal, geen echte klantgegevens.
+  var DEMO_ACCOUNTS = [
+    { email:"demo@thegoodlifedistribution.nl", password:"demo1234", company:"Demo Sportvoeding B.V.", customerNo:"TGL-1042", tier:"Staffel 24+ \u00b7 15% korting" },
+    { email:"info@thehealthhouse.nl", password:"healthhouse", company:"The Health House B.V.", customerNo:"TGL-1001", tier:"Staffel 96+ \u00b7 25% korting" }
+  ];
+  var SESSION_KEY = "tglSession";
+  function getSession(){
+    try{
+      var raw = localStorage.getItem(SESSION_KEY) || sessionStorage.getItem(SESSION_KEY);
+      return raw ? JSON.parse(raw) : null;
+    }catch(e){ return null; }
+  }
+  function setSession(account, remember){
+    var data = JSON.stringify({ email:account.email, company:account.company, customerNo:account.customerNo, tier:account.tier });
+    try{
+      if(remember){ localStorage.setItem(SESSION_KEY, data); sessionStorage.removeItem(SESSION_KEY); }
+      else { sessionStorage.setItem(SESSION_KEY, data); localStorage.removeItem(SESSION_KEY); }
+    }catch(e){}
+  }
+  function clearSession(){
+    try{ localStorage.removeItem(SESSION_KEY); sessionStorage.removeItem(SESSION_KEY); }catch(e){}
+  }
+  function updateAccountNav(){
+    var session = getSession();
+    var accountLink = byId("accountLink");
+    if(accountLink){
+      accountLink.textContent = session ? (session.company || "Mijn account") : "Inloggen";
+      accountLink.setAttribute("href", session ? "#account" : "#inloggen");
+    }
+    var mLogin = byId("mobileLoginLink"), mAccount = byId("mobileAccountLink");
+    if(mLogin && mAccount){
+      mLogin.style.display = session ? "none" : "block";
+      mAccount.style.display = session ? "block" : "none";
+      mAccount.textContent = session ? (session.company || "Mijn account") : "Mijn account";
+    }
+  }
+
+  var ORDERS_DEMO = [
+    { no:"TGL-30412", date:"12-01-2026", items:18, amount:"\u20ac 1.240,00", status:"Geleverd" },
+    { no:"TGL-30458", date:"02-02-2026", items:24, amount:"\u20ac 1.865,50", status:"Onderweg" },
+    { no:"TGL-30490", date:"18-02-2026", items:12, amount:"\u20ac 640,00", status:"In behandeling" },
+    { no:"TGL-30371", date:"05-12-2025", items:36, amount:"\u20ac 2.910,25", status:"Geleverd" }
+  ];
+  function statusClass(s){
+    if(s === "Geleverd") return "status-geleverd";
+    if(s === "Onderweg") return "status-onderweg";
+    return "status-behandeling";
+  }
+  function renderAccountPage(){
+    var session = getSession();
+    if(!session) return;
+    byId("acctWelcome").textContent = "Welkom terug, " + session.company;
+    byId("acctStats").innerHTML =
+      '<div class="stat-tile"><div class="stat-label">Klantnummer</div><div class="stat-value">' + esc(session.customerNo) + '</div></div>' +
+      '<div class="stat-tile"><div class="stat-label">Staffelniveau</div><div class="stat-value">' + esc(session.tier) + '</div></div>' +
+      '<div class="stat-tile"><div class="stat-label">Openstaande orders</div><div class="stat-value">1</div></div>' +
+      '<div class="stat-tile"><div class="stat-label">Totaal dit jaar</div><div class="stat-value">\u20ac 3.745,50</div></div>';
+    byId("acctOrdersBody").innerHTML = ORDERS_DEMO.map(function(o){
+      return '<tr><td>' + o.no + '</td><td>' + o.date + '</td><td>' + o.items + '</td><td>' + o.amount +
+        '</td><td><span class="status-pill ' + statusClass(o.status) + '">' + esc(o.status) + '</span></td></tr>';
+    }).join("");
+    byId("acctManager").innerHTML =
+      '<p><strong>Naam:</strong> Tom Bakker</p>' +
+      '<p><strong>E-mail:</strong> <a href="mailto:info@thegoodlifedistribution.nl">info@thegoodlifedistribution.nl</a></p>' +
+      '<p><strong>Telefoon:</strong> 020 - 123 45 67</p>';
+  }
+
   /* ---------- ROUTER ---------- */
   var PAGE_MAP = {
     "#home": "page-home",
@@ -1189,7 +1295,9 @@
     "#verzending": "page-verzending",
     "#retour": "page-retour",
     "#voorwaarden": "page-voorwaarden",
-    "#faq": "page-faq"
+    "#faq": "page-faq",
+    "#inloggen": "page-inloggen",
+    "#account": "page-account"
   };
   function router(){
     var hash = window.location.hash || "#home";
@@ -1209,6 +1317,14 @@
         state.filterCat = params.cat && CATEGORIES.indexOf(params.cat) > -1 ? params.cat : "Alle categorie\u00ebn";
         renderFilters();
         renderCatalog();
+      }
+      if(pageId === "page-account"){
+        if(!getSession()){
+          showToast("Log eerst in om je account te bekijken.");
+          window.location.hash = "#inloggen";
+          return;
+        }
+        renderAccountPage();
       }
     }
     document.querySelectorAll(".page").forEach(function(el){ el.classList.remove("active"); });
@@ -1509,7 +1625,9 @@
     { t:"Verzending", s:"Service", h:"#verzending", k:"verzending levering bezorging gratis 500 tarieven" },
     { t:"Retourneren", s:"Service", h:"#retour", k:"retour retourneren rma schade ruilen" },
     { t:"Algemene voorwaarden", s:"Service", h:"#voorwaarden", k:"voorwaarden algemene betaling eigendomsvoorbehoud" },
-    { t:"Veelgestelde vragen", s:"Service", h:"#faq", k:"faq vragen antwoorden hulp minimale afname" }
+    { t:"Veelgestelde vragen", s:"Service", h:"#faq", k:"faq vragen antwoorden hulp minimale afname" },
+    { t:"Inloggen", s:"Klantportaal", h:"#inloggen", k:"inloggen login account wachtwoord klantportaal" },
+    { t:"Mijn account", s:"Klantportaal", h:"#account", k:"mijn account portaal orders facturen accountmanager" }
   ]);
   var searchPanel = byId("searchPanel"), searchOverlay = byId("searchOverlay");
   var searchInput = byId("searchInput"), searchResults = byId("searchResults");
@@ -1595,10 +1713,51 @@
     showToast("Bericht verstuurd");
   });
 
+  /* ---------- LOGIN / ACCOUNT FORMS ---------- */
+  var loginForm = byId("loginForm"), loginError = byId("loginError");
+  loginForm.addEventListener("submit", function(e){
+    e.preventDefault();
+    var email = byId("lfEmail").value.trim().toLowerCase();
+    var pass = byId("lfPass").value;
+    var remember = byId("lfRemember").checked;
+    var account = DEMO_ACCOUNTS.filter(function(a){
+      return a.email.toLowerCase() === email && a.password === pass;
+    })[0];
+    if(!account){
+      loginError.classList.add("show");
+      return;
+    }
+    loginError.classList.remove("show");
+    setSession(account, remember);
+    updateAccountNav();
+    loginForm.reset();
+    showToast("Welkom terug, " + account.company);
+    window.location.hash = "#account";
+  });
+
+  byId("forgotPassBtn").addEventListener("click", function(){
+    showToast("Neem contact op via info@thegoodlifedistribution.nl om je wachtwoord te herstellen.");
+  });
+
+  byId("logoutBtn").addEventListener("click", function(){
+    clearSession();
+    updateAccountNav();
+    showToast("Je bent uitgelogd");
+    window.location.hash = "#home";
+  });
+
+  byId("acctDownloads").addEventListener("click", function(e){
+    var a = e.target.closest("a");
+    if(!a) return;
+    e.preventDefault();
+    showToast("Download wordt voorbereid\u2026");
+  });
+
   /* ---------- INIT ---------- */
   renderFilters();
   renderCatalog();
   renderCart();
+  updateAccountNav();
   router();
 
   /* ---------- COOKIE BAR ---------- */
